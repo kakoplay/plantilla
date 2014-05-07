@@ -1,0 +1,15 @@
+#!/bin/sh
+
+files=`git diff --cached --name-only | grep -i "readme$"`;
+
+if [ "$files" != "" ]; then
+	echo "ERROR: No se ha efectuado el commit. Razon: no es posible añadir ficheros README al commit.";
+	exit 1;
+fi
+
+files=`git diff --cached --name-only | grep -i ".bak$"`;
+
+if [ "$files" != "" ]; then
+	echo "ERROR: No se ha efectuado el commit. Razon: no es posible añadir ficheros de extensión .bak al commit";
+	exit 1;
+fi
